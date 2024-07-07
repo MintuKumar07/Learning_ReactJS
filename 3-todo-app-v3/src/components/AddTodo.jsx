@@ -1,22 +1,19 @@
-import { useState } from "react";
+import { useRef } from "react";
 
 function AddTodo({ onNewItem }) {
-  const [todoName, setTodoName] = useState("");
-  const [dueDate, setDueDate] = useState("");
-
-  const handleNameChange = (event) => {
-    setTodoName(event.target.value);
-  };
-
-  const handleDateChange = (event) => {
-    setDueDate(event.target.value);
-  };
+  const todoNameElement = useRef();
+  const dueDateElement = useRef();
 
   const handleAddButtonClicked = (event) => {
     event.preventDefault();
+
+    const todoName = todoNameElement.current.value;
+    const dueDate = dueDateElement.current.value;
+    todoNameElement.current.value="";
+    dueDateElement.current.value="";
+
+    //console.log(`${todoName} due on ${dueDate}`);
     onNewItem(todoName, dueDate);
-    setTodoName("");
-    setDueDate("");
   };
 
   return (
@@ -25,13 +22,12 @@ function AddTodo({ onNewItem }) {
         <div className="col-6">
           <input
             type="text"
+            ref={todoNameElement}
             placeholder="Enter todo here"
-            value={todoName}
-            onChange={handleNameChange}
           />
         </div>
         <div className="col-4">
-          <input type="date" value={dueDate} onChange={handleDateChange} />
+          <input type="date" ref={dueDateElement} />
         </div>
         <div className="col-2">
           <button type="submit" className="btn btn-success mi-button">
