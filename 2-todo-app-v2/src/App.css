@@ -1,0 +1,15 @@
+
+input{
+  width: 100%;
+}
+
+
+
+.mi-button{
+  min-width: 80px;
+  float: right;
+}
+
+.mi-row{
+  margin: 10px 5px;
+}

@@ -1,0 +1,6 @@
+.cont{
+  width: 50%;
+  min-width: 300px;
+  border: 2px solid rgb(224, 223, 223);
+  border-radius: 5px;
+}
